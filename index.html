@@ -657,7 +657,7 @@
           <h2 class="section-title">Una comunidad unida por los <em>gatos</em></h2>
           <p>Somos voluntarios del vecindario de Floral Park comprometidos con el bienestar de los gatos callejeros que viven entre nosotros. Creemos en la coexistencia responsable y compasiva.</p>
           <p>A través del programa TNR (Trampa, Neuter, Regresa), hemos logrado estabilizar y reducir gradualmente las colonias de manera humanitaria, sin causar sufrimiento.</p>
-          <p>Cada gato que cuidas importa. Cada donación marca una diferencia real en nuestra comunidad.</p>
+          <p>Cada gato que cuidas importa.</p>
         </div>
         <div class="stats-grid">
           <div class="stat-card">
@@ -674,33 +674,9 @@
           </div>
           <div class="stat-card">
             <div class="stat-number">❤️</div>
-            <div class="stat-label">Años de Servicio</div>
+            <div class="stat-label">Vecinos Comprometidos</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAP -->
-  <section id="mapa">
-    <div class="container">
-      <div class="map-header">
-        <span class="section-label">Ubicaciones</span>
-        <h2 class="section-title">Mapa de <em>Colonias</em></h2>
-        <p style="color:var(--mid-gray);font-size:1rem;line-height:1.7;max-width:560px;">Encuentra las colonias activas en Floral Park. Cada marcador representa un punto de alimentación o colonia registrada.</p>
-      </div>
-      <div class="map-wrapper">
-        <iframe
-          style="width: 100%; height: 460px; border: 0;"
-          allowfullscreen
-          allow="geolocation"
-          src="//umap.openstreetmap.fr/en/map/gatos-de-floral-park_1374671?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true"
-        ></iframe>
-      </div>
-      <div class="map-caption">
-        <a href="//umap.openstreetmap.fr/en/map/gatos-de-floral-park_1374671?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true" target="_blank" rel="noopener">
-          Ver mapa en pantalla completa →
-        </a>
       </div>
     </div>
   </section>
@@ -730,6 +706,30 @@
           <h3>Regreso</h3>
           <p>Los gatos son devueltos a su colonia. Sin reproducción, la colonia se estabiliza y eventualmente disminuye de forma natural.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="mapa">
+    <div class="container">
+      <div class="map-header">
+        <span class="section-label">Ubicaciones</span>
+        <h2 class="section-title">Mapa de <em>Colonias</em></h2>
+        <p style="color:var(--mid-gray);font-size:1rem;line-height:1.7;max-width:560px;">Encuentra las colonias activas en Floral Park. Cada marcador representa un punto de alimentación o colonia registrada.</p>
+      </div>
+      <div class="map-wrapper">
+        <iframe
+          style="width: 100%; height: 460px; border: 0;"
+          allowfullscreen
+          allow="geolocation"
+          src="//umap.openstreetmap.fr/en/map/gatos-de-floral-park_1374671?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true"
+        ></iframe>
+      </div>
+      <div class="map-caption">
+        <a href="//umap.openstreetmap.fr/en/map/gatos-de-floral-park_1374671?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true" target="_blank" rel="noopener">
+          Ver mapa en pantalla completa →
+        </a>
       </div>
     </div>
   </section>
@@ -820,10 +820,10 @@
   <section id="contacto">
     <div class="container">
       <span class="section-label">Escríbenos</span>
-      <h2 class="section-title">¿Tienes alguna <em>pregunta?</em></h2>
+      <h2 class="section-title">¿Tienes alguna pregunta?</h2>
       <p>Si encontraste un gato herido, quieres reportar una colonia nueva, o simplemente deseas unirte al equipo, ¡nos encantaría saber de ti!</p>
       <div class="contact-links">
-        <a href="mailto:info@gatosdefloralpark.org" class="btn btn-white">📧 Enviar Correo</a>
+        <a href="/cdn-cgi/l/email-protection#d4bdbab2bb94b3b5a0bba7b0b1b2b8bba6b5b8a4b5a6bffabba6b3" class="btn btn-white">📧 Enviar Correo</a>
         <a href="#" class="btn btn-white-outline">📸 Seguirnos en Instagram</a>
       </div>
     </div>
@@ -834,7 +834,7 @@
     <p>🐾 Gatos de Floral Park — Hecho con amor por la comunidad &nbsp;·&nbsp; <a href="#sobre-nosotros">Nosotros</a> &nbsp;·&nbsp; <a href="#mapa">Mapa</a> &nbsp;·&nbsp; <a href="#donaciones">Donar</a></p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Sticky nav on scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -846,11 +846,3 @@
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
-</body>
-</html>
