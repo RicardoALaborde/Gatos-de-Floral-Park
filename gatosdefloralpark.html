@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gatos de Floral Park</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #fdf6ec;
+      --warm-white: #fffdf9;
+      --terracotta: #c0593a;
+      --terracotta-light: #e07a5f;
+      --terracotta-dark: #8b3a24;
+      --sage: #7a9e7e;
+      --sage-light: #a8c5ac;
+      --charcoal: #2e2b26;
+      --mid-gray: #6b6560;
+      --gold: #d4a840;
+      --gold-light: #f0cc7a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    header {
+      position: relative;
+      background-color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      overflow: hidden;
+    }
+
+    /* Decorative background pattern */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(192,89,58,0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(122,158,126,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(212,168,64,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Paw print texture */
+    header::after {
+      content: '🐾';
+      position: absolute;
+      font-size: 12rem;
+      opacity: 0.04;
+      bottom: -1rem;
+      right: -2rem;
+      transform: rotate(-15deg);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 700;
+      color: var(--warm-white);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.4s;
+    }
+
+    .hero-title span {
+      color: var(--terracotta-light);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255,253,249,0.65);
+      max-width: 560px;
+      margin: 1.8rem auto 0;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.65s;
+    }
+
+    .hero-cats {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+      font-size: 2.2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.85s;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,253,249,0.4);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.2s;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,253,249,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite 1.5s;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 0.8; transform: scaleY(1.1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    /* ── ABOUT ────────────────────────────────────────────── */
+    #sobre-nosotros {
+      background-color: var(--warm-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--mid-gray);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--terracotta);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(192,89,58,0.12);
+    }
+
+    .stat-card:nth-child(2) { border-color: var(--sage); }
+    .stat-card:nth-child(3) { border-color: var(--gold); }
+    .stat-card:nth-child(4) { border-color: var(--terracotta-light); }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-top: 0.4rem;
+    }
+
+    /* ── MAP ──────────────────────────────────────────────── */
+    #mapa {
+      background-color: var(--cream);
+    }
+
+    .map-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .map-wrapper {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(46,43,38,0.15);
+      border: 3px solid var(--warm-white);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 460px;
+      border: 0;
+      display: block;
+    }
+
+    .map-caption {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .map-caption a {
+      font-size: 0.85rem;
+      color: var(--terracotta);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--terracotta-light);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    .map-caption a:hover { color: var(--terracotta-dark); }
+
+    /* ── TNR ──────────────────────────────────────────────── */
+    #tnr {
+      background-color: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #tnr::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 90% 10%, rgba(192,89,58,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #tnr .section-label { color: var(--gold-light); }
+    #tnr .section-title { color: var(--warm-white); }
+
+    .tnr-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .tnr-step {
+      position: relative;
+      padding: 2rem 1.5rem;
+      background: rgba(255,253,249,0.05);
+      border: 1px solid rgba(255,253,249,0.1);
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tnr-step:hover {
+      background: rgba(255,253,249,0.08);
+      border-color: rgba(192,89,58,0.4);
+    }
+
+    .tnr-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .tnr-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--warm-white);
+      margin-bottom: 0.6rem;
+    }
+
+    .tnr-step p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(255,253,249,0.6);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -0.75rem;
+      left: 1.5rem;
+      background: var(--terracotta);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    /* ── DONATION ─────────────────────────────────────────── */
+    #donaciones {
+      background-color: var(--warm-white);
+    }
+
+    .donation-intro {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--mid-gray);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .donation-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .donation-card {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .donation-card:hover {
+      border-color: var(--terracotta-light);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(192,89,58,0.12);
+    }
+
+    .donation-card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .donation-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .donation-card p {
+      font-size: 0.88rem;
+      color: var(--mid-gray);
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.6rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta-dark);
+      transform: scale(1.04);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--terracotta);
+      border: 2px solid var(--terracotta);
+    }
+
+    .btn-outline:hover {
+      background: var(--terracotta);
+      color: white;
+    }
+
+    /* ── HOW TO HELP ──────────────────────────────────────── */
+    #ayudar {
+      background-color: var(--cream);
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .help-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.4rem;
+      background: var(--warm-white);
+      border-radius: 10px;
+      transition: box-shadow 0.2s;
+    }
+
+    .help-item:hover {
+      box-shadow: 0 6px 20px rgba(46,43,38,0.08);
+    }
+
+    .help-emoji {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .help-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .help-item p {
+      font-size: 0.85rem;
+      color: var(--mid-gray);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────────── */
+    #contacto {
+      background: var(--terracotta);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    #contacto .section-label { color: rgba(255,255,255,0.7); }
+
+    #contacto .section-title {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    #contacto p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--terracotta);
+      font-weight: 700;
+    }
+
+    .btn-white:hover {
+      background: var(--cream);
+      transform: scale(1.04);
+    }
+
+    .btn-white-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.7);
+      font-weight: 700;
+    }
+
+    .btn-white-outline:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,253,249,0.45);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: rgba(255,253,249,0.55);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--terracotta-light); }
+
+    /* ── NAV ──────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(46,43,38,0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--warm-white);
+      text-decoration: none;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,253,249,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta-light); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .tnr-steps { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── DIVIDER ──────────────────────────────────────────── */
+    .paw-divider {
+      text-align: center;
+      font-size: 1.2rem;
+      opacity: 0.25;
+      padding: 1rem 0 0;
+      letter-spacing: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Gatos de Floral Park</a>
+    <ul class="nav-links">
+      <li><a href="#sobre-nosotros">Nosotros</a></li>
+      <li><a href="#mapa">Mapa</a></li>
+      <li><a href="#tnr">TNR</a></li>
+      <li><a href="#donaciones">Donar</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero-eyebrow">Comunidad Felina · Floral Park</div>
+    <h1 class="hero-title">Gatos de<br><span>Floral Park</span></h1>
+    <p class="hero-subtitle">Cuidamos, esterilizamos y protegemos las colonias de gatos callejeros de nuestra comunidad con amor y dedicación.</p>
+    <div class="hero-cats" aria-hidden="true">🐱 🐈 🐾 🐈 🐱</div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Explorar
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="sobre-nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-label">Quiénes Somos</span>
+          <h2 class="section-title">Una comunidad unida por los <em>gatos</em></h2>
+          <p>Somos voluntarios del vecindario de Floral Park comprometidos con el bienestar de los gatos callejeros que viven entre nosotros. Creemos en la coexistencia responsable y compasiva.</p>
+          <p>A través del programa TNR (Trampa, Neuter, Regresa), hemos logrado estabilizar y reducir gradualmente las colonias de manera humanitaria, sin causar sufrimiento.</p>
+          <p>Cada gato que cuidas importa. Cada donación marca una diferencia real en nuestra comunidad.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">🐱</div>
+            <div class="stat-label">Colonias Activas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">✂️</div>
+            <div class="stat-label">Gatos Esterilizados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">🏡</div>
+            <div class="stat-label">Voluntarios</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">❤️</div>
+            <div class="stat-label">Años de Servicio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="mapa">
+    <div class="container">
+      <div class="map-header">
+        <span class="section-label">Ubicaciones</span>
+        <h2 class="section-title">Mapa de <em>Colonias</em></h2>
+        <p style="color:var(--mid-gray);font-size:1rem;line-height:1.7;max-width:560px;">Encuentra las colonias activas en Floral Park. Cada marcador representa un punto de alimentación o colonia registrada.</p>
+      </div>
+      <div class="map-wrapper">
+        <iframe
+          style="width: 100%; height: 460px; border: 0;"
+          allowfullscreen
+          allow="geolocation"
+          src="//umap.openstreetmap.fr/en/map/gatos-de-floral-park_1374671?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true"
+        ></iframe>
+      </div>
+      <div class="map-caption">
+        <a href="//umap.openstreetmap.fr/en/map/gatos-de-floral-park_1374671?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true" target="_blank" rel="noopener">
+          Ver mapa en pantalla completa →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TNR -->
+  <section id="tnr">
+    <div class="container">
+      <span class="section-label">Nuestro Método</span>
+      <h2 class="section-title">El Programa <em>TNR</em></h2>
+      <p style="color:rgba(255,253,249,0.6);max-width:580px;line-height:1.8;font-size:1rem;">El método TNR (Trap-Neuter-Return) es el enfoque más humano y efectivo para gestionar colonias de gatos callejeros. Sin violencia. Sin abandono.</p>
+      <div class="tnr-steps">
+        <div class="tnr-step">
+          <span class="step-number">Paso 1</span>
+          <span class="tnr-icon">🪤</span>
+          <h3>Trampa</h3>
+          <p>Capturamos a los gatos de forma segura y humanitaria usando trampas especiales, sin causarles daño ni estrés innecesario.</p>
+        </div>
+        <div class="tnr-step">
+          <span class="step-number">Paso 2</span>
+          <span class="tnr-icon">🏥</span>
+          <h3>Esterilización</h3>
+          <p>Los gatos son llevados a una clínica veterinaria para ser esterilizados, vacunados y tratados. Se les marca la oreja para identificarlos.</p>
+        </div>
+        <div class="tnr-step">
+          <span class="step-number">Paso 3</span>
+          <span class="tnr-icon">🏠</span>
+          <h3>Regreso</h3>
+          <p>Los gatos son devueltos a su colonia. Sin reproducción, la colonia se estabiliza y eventualmente disminuye de forma natural.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATIONS -->
+  <section id="donaciones">
+    <div class="container">
+      <span class="section-label">Apoya la Causa</span>
+      <h2 class="section-title">Haz una <em>Donación</em></h2>
+      <p class="donation-intro">Tu generosidad cubre comida, visitas al veterinario, trampas y suministros para las colonias. Cada aporte, por pequeño que sea, ayuda a un gato que lo necesita.</p>
+      <div class="donation-cards">
+        <div class="donation-card">
+          <div class="donation-card-icon">💳</div>
+          <h3>PayPal</h3>
+          <p>Donación rápida y segura con tarjeta de crédito o cuenta PayPal.</p>
+          <a href="#" class="btn btn-primary">Donar por PayPal</a>
+        </div>
+        <div class="donation-card">
+          <div class="donation-card-icon">📱</div>
+          <h3>Venmo</h3>
+          <p>Envíanos una donación directamente desde tu app de Venmo.</p>
+          <a href="#" class="btn btn-primary">Donar por Venmo</a>
+        </div>
+        <div class="donation-card">
+          <div class="donation-card-icon">🎯</div>
+          <h3>GoFundMe</h3>
+          <p>Apoya nuestra campaña y compártela con tus amigos y familiares.</p>
+          <a href="#" class="btn btn-outline">Ver Campaña</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO HELP -->
+  <section id="ayudar">
+    <div class="container">
+      <span class="section-label">Involúcrate</span>
+      <h2 class="section-title">¿Cómo <em>Ayudar</em>?</h2>
+      <p style="color:var(--mid-gray);font-size:1rem;line-height:1.7;max-width:560px;">No se necesita mucho para hacer una gran diferencia en la vida de estos gatos. Hay muchas formas de contribuir.</p>
+      <div class="help-grid">
+        <div class="help-item">
+          <span class="help-emoji">🥫</span>
+          <div>
+            <h4>Donar Suministros</h4>
+            <p>Comida enlatada, seca, mantas o cajas de abrigo para las colonias.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <span class="help-emoji">🤝</span>
+          <div>
+            <h4>Ser Voluntario</h4>
+            <p>Únete a nuestro equipo para alimentar, atrapar o transportar gatos.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <span class="help-emoji">📣</span>
+          <div>
+            <h4>Difundir el Mensaje</h4>
+            <p>Comparte nuestra página en redes sociales y con tus vecinos.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <span class="help-emoji">🏠</span>
+          <div>
+            <h4>Hogar de Acogida</h4>
+            <p>Alberga temporalmente a gatos mientras buscan un hogar permanente.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <span class="help-emoji">📸</span>
+          <div>
+            <h4>Documentar Colonias</h4>
+            <p>Reporta nuevas colonias o gatos sin esterilizar en tu área.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <span class="help-emoji">💰</span>
+          <div>
+            <h4>Donar Dinero</h4>
+            <p>Las donaciones económicas cubren costos veterinarios y de operación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto">
+    <div class="container">
+      <span class="section-label">Escríbenos</span>
+      <h2 class="section-title">¿Tienes alguna <em>pregunta?</em></h2>
+      <p>Si encontraste un gato herido, quieres reportar una colonia nueva, o simplemente deseas unirte al equipo, ¡nos encantaría saber de ti!</p>
+      <div class="contact-links">
+        <a href="mailto:info@gatosdefloralpark.org" class="btn btn-white">📧 Enviar Correo</a>
+        <a href="#" class="btn btn-white-outline">📸 Seguirnos en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🐾 Gatos de Floral Park — Hecho con amor por la comunidad &nbsp;·&nbsp; <a href="#sobre-nosotros">Nosotros</a> &nbsp;·&nbsp; <a href="#mapa">Mapa</a> &nbsp;·&nbsp; <a href="#donaciones">Donar</a></p>
+  </footer>
+
+  <script>
+    // Sticky nav on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
